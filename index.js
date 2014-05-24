@@ -1,10 +1,12 @@
 'use strict';
 
-var adapter = require('localstorage-down');
-adapter.adapterName = 'localstorage';
-adapter.valid = function () {
+var adapter = require('pouchdb-abstract-adapter');
+
+var leveldown = require('localstorage-down');
+leveldown.adapterName = 'localstorage';
+leveldown.valid = function () {
   return 'localStorage' in window;
 }
-adapter.usePrefix = true;
+leveldown.usePrefix = true;
 
-module.exports = adapter;
+module.exports = adapter(leveldown);
