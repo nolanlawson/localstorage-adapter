@@ -1,7 +1,5 @@
 'use strict';
 
-var adapter = require('pouchdb-abstract-adapter');
-
 var leveldown = require('localstorage-down');
 leveldown.adapterName = 'localstorage';
 leveldown.valid = function () {
@@ -9,4 +7,4 @@ leveldown.valid = function () {
 }
 leveldown.usePrefix = true;
 
-module.exports = adapter(leveldown);
+module.exports = leveldown;
